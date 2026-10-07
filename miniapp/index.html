@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kokoro Reader</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px system-ui, sans-serif; margin: 0; padding: 16px; max-width: 640px; margin-inline: auto; }
+  h1 { font-size: 1.2rem; }
+  label, select, button, textarea, input { display: block; width: 100%; box-sizing: border-box; margin: 8px 0; font: inherit; }
+  textarea { height: 9rem; padding: 8px; }
+  button { padding: 12px; border-radius: 10px; border: 0; background: #2481cc; color: #fff; }
+  button:disabled { opacity: .5; }
+  pre { white-space: pre-wrap; font-size: .85rem; opacity: .8; }
+  progress { width: 100%; }
+</style>
+</head>
+<body>
+<h1>Kokoro Reader <small>(runs on your device)</small></h1>
+
+<label>Text file (.txt / .md)
+  <input id="file" type="file" accept=".txt,.md,text/plain">
+</label>
+<textarea id="text" placeholder="…or paste text here">Good morning. This speech is generated entirely on your own device, with no server involved.</textarea>
+
+<label>Voice
+  <select id="voice">
+    <option value="af_heart">af_heart (US, female)</option>
+    <option value="af_bella">af_bella (US, female)</option>
+    <option value="am_michael">am_michael (US, male)</option>
+    <option value="bf_emma">bf_emma (UK, female)</option>
+    <option value="bm_george">bm_george (UK, male)</option>
+  </select>
+</label>
+
+<button id="go">Generate</button>
+<progress id="bar" value="0" max="1" hidden></progress>
+<pre id="log"></pre>
+<audio id="player" controls hidden></audio>
+<a id="dl" download="speech.wav" hidden>Download WAV</a>
+
+<script type="module">
+import { KokoroTTS } from "https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/dist/kokoro.web.js";
+
+const $ = id => document.getElementById(id);
+const log = m => { $("log").textContent += m + "\n"; };
+window.Telegram?.WebApp?.ready();
+
+$("file").onchange = async e => {
+  const f = e.target.files[0];
+  if (f) $("text").value = await f.text();
+};
+
+let tts;
+async function load() {
+  if (tts) return tts;
+  const webgpu = !!navigator.gpu;
+  log(webgpu ? "WebGPU available, using it." : "No WebGPU, using WASM (slower).");
+  log("Loading model (first run downloads it)…");
+  tts = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", {
+    dtype: webgpu ? "fp32" : "q8",
+    device: webgpu ? "webgpu" : "wasm",
+  });
+  return tts;
+}
+
+function sentences(text) {
+  const parts = text.replace(/\s+/g, " ").match(/[^.!?]+[.!?]*\s*/g) || [];
+  const out = []; let cur = "";
+  for (const p of parts) {
+    if ((cur + p).length > 300 && cur) { out.push(cur); cur = p; } else cur += p;
+  }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+
+function wavBlob(chunks, sr) {
+  const n = chunks.reduce((a, c) => a + c.length, 0);
+  const buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+  const s = (o, t) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  s(0, "RIFF"); v.setUint32(4, 36 + n * 2, true); s(8, "WAVEfmt ");
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  s(36, "data"); v.setUint32(40, n * 2, true);
+  let o = 44;
+  for (const c of chunks) for (let i = 0; i < c.length; i++, o += 2)
+    v.setInt16(o, Math.max(-1, Math.min(1, c[i])) * 32767, true);
+  return new Blob([buf], { type: "audio/wav" });
+}
+
+$("go").onclick = async () => {
+  $("go").disabled = true; $("log").textContent = "";
+  try {
+    const model = await load();
+    const parts = sentences($("text").value);
+    const bar = $("bar"); bar.hidden = false; bar.max = parts.length; bar.value = 0;
+    const chunks = []; let sr = 24000; const t0 = performance.now();
+    for (const p of parts) {
+      const a = await model.generate(p, { voice: $("voice").value });
+      chunks.push(a.audio); sr = a.sampling_rate; bar.value++;
+    }
+    const secs = chunks.reduce((a, c) => a + c.length, 0) / sr;
+    const took = (performance.now() - t0) / 1000;
+    log(`${secs.toFixed(1)}s of audio in ${took.toFixed(1)}s (${(secs / took).toFixed(1)}x real time)`);
+    const url = URL.createObjectURL(wavBlob(chunks, sr));
+    $("player").src = url; $("player").hidden = false;
+    $("dl").href = url; $("dl").hidden = false;
+    $("player").play().catch(() => {});
+  } catch (e) { log("Error: " + e.message); }
+  $("go").disabled = false;
+};
+</script>
+</body>
+</html>
