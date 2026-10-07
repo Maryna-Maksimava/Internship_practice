@@ -35,6 +35,10 @@
   </select>
 </label>
 
+<label>Pause at line breaks (seconds; blank line = double)
+  <input id="pause" type="number" min="0" max="5" step="0.1" value="0.7">
+</label>
+
 <button id="go">Generate</button>
 <progress id="bar" value="0" max="1" hidden></progress>
 <pre id="log"></pre>
@@ -66,13 +70,24 @@ async function load() {
   return tts;
 }
 
+// Returns [{ text, pause }]: pause is a multiplier of the base pause that
+// follows this chunk (1 after a line break, 2 after a blank line, 0 mid-line).
 function sentences(text) {
-  const parts = text.replace(/\s+/g, " ").match(/[^.!?]+[.!?]*\s*/g) || [];
-  const out = []; let cur = "";
-  for (const p of parts) {
-    if ((cur + p).length > 300 && cur) { out.push(cur); cur = p; } else cur += p;
+  const out = [];
+  const lines = text.replace(/\r\n?/g, "\n").split("\n");
+  let blank = 0;
+  const flush = (cur, last) => { if (cur.trim()) out.push({ text: cur, pause: 0 }); };
+  for (const line of lines) {
+    if (!line.trim()) { blank++; continue; }
+    if (out.length) out[out.length - 1].pause = blank ? 2 : 1;
+    blank = 0;
+    const parts = line.replace(/\s+/g, " ").match(/[^.!?]+[.!?]*\s*/g) || [];
+    let cur = "";
+    for (const p of parts) {
+      if ((cur + p).length > 300 && cur) { flush(cur); cur = p; } else cur += p;
+    }
+    flush(cur);
   }
-  if (cur.trim()) out.push(cur);
   return out;
 }
 
@@ -97,9 +112,11 @@ $("go").onclick = async () => {
     const parts = sentences($("text").value);
     const bar = $("bar"); bar.hidden = false; bar.max = parts.length; bar.value = 0;
     const chunks = []; let sr = 24000; const t0 = performance.now();
+    const pauseSec = parseFloat($("pause").value) || 0;
     for (const p of parts) {
-      const a = await model.generate(p, { voice: $("voice").value });
+      const a = await model.generate(p.text, { voice: $("voice").value });
       chunks.push(a.audio); sr = a.sampling_rate; bar.value++;
+      if (p.pause && pauseSec) chunks.push(new Float32Array(Math.round(sr * pauseSec * p.pause)));
     }
     const secs = chunks.reduce((a, c) => a + c.length, 0) / sr;
     const took = (performance.now() - t0) / 1000;
