@@ -35,6 +35,13 @@
   </select>
 </label>
 
+<label>Backend (use WASM if WebGPU sounds garbled)
+  <select id="backend">
+    <option value="wasm">WASM, q8 (safe, slower)</option>
+    <option value="webgpu">WebGPU, fp32 (fast, may glitch on some phones)</option>
+  </select>
+</label>
+
 <label>Pause at line breaks (seconds; blank line = double)
   <input id="pause" type="number" min="0" max="5" step="0.1" value="0.7">
 </label>
@@ -57,16 +64,15 @@ $("file").onchange = async e => {
   if (f) $("text").value = await f.text();
 };
 
-let tts;
+let tts, ttsKey;
 async function load() {
-  if (tts) return tts;
-  const webgpu = !!navigator.gpu;
-  log(webgpu ? "WebGPU available, using it." : "No WebGPU, using WASM (slower).");
-  log("Loading model (first run downloads it)…");
-  tts = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", {
-    dtype: webgpu ? "fp32" : "q8",
-    device: webgpu ? "webgpu" : "wasm",
-  });
+  const mode = $("backend").value;
+  if (mode === "webgpu" && !navigator.gpu) throw new Error("WebGPU is not available on this device.");
+  if (tts && ttsKey === mode) return tts;
+  const opts = mode === "webgpu" ? { dtype: "fp32", device: "webgpu" } : { dtype: "q8", device: "wasm" };
+  log(`Loading model with ${opts.device}/${opts.dtype} (first run downloads it)…`);
+  tts = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", opts);
+  ttsKey = mode;
   return tts;
 }
 
