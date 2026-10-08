@@ -263,7 +263,7 @@ $("go").onclick = async () => {
     const url = URL.createObjectURL(wavBlob(chunks, sr));
     $("player").src = url; $("player").hidden = false;
     $("dl").href = url; $("dl").hidden = false;
-    $("player").play().catch(() => {});
+    $("player").currentTime = 0; syncReader(); // ready and highlighted at the start; the user presses play
   } catch (e) { log("Error: " + e.message); }
   $("go").disabled = false;
 };
