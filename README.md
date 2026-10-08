@@ -3,6 +3,8 @@
 Turn text files into natural-sounding speech with the free, open-source [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) model, with a planned Telegram front end where synthesis runs **on the user's own device**.
 
 Status: prototype. See [specification.md](specification.md) for goals and design.
+Mini App Access for local runs:
+https://maryna-maksimava.github.io/Internship_practice/miniapp/
 
 ## Layout
 
