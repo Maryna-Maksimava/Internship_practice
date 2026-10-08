@@ -17,7 +17,7 @@ jobs:
         run: pip install pytest pypdf fpdf2
       - name: Syntax check
         run: python -m compileall -q bot demo experiments
-      - name: Tests (the model smoke test is skipped here: no model files)
+      - name: "Tests (the model smoke test is skipped here, no model files)"
         run: python -m pytest tests -v
 
   miniapp:
