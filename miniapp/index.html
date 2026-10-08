@@ -20,8 +20,8 @@
 <body>
 <h1>Kokoro Reader <small>(runs on your device)</small></h1>
 
-<label>Text file (.txt / .md)
-  <input id="file" type="file" accept=".txt,.md,text/plain">
+<label>Text file (.txt / .md / .pdf)
+  <input id="file" type="file" accept=".txt,.md,.pdf,text/plain,application/pdf">
 </label>
 <textarea id="text" placeholder="…or paste text here">Good morning. This speech is generated entirely on your own device, with no server involved.</textarea>
 
@@ -37,8 +37,8 @@
 
 <label>Backend (use WASM if WebGPU sounds garbled)
   <select id="backend">
-    <option value="wasm">WASM, q8 (safe, slower)</option>
-    <option value="webgpu">WebGPU, fp32 (fast, may glitch on some phones)</option>
+    <option value="webgpu">WebGPU, fp32 (fast; default on desktop)</option>
+    <option value="wasm">WASM, q8 (safe, slower; default on phones)</option>
   </select>
 </label>
 
@@ -59,28 +59,115 @@ const $ = id => document.getElementById(id);
 const log = m => { $("log").textContent += m + "\n"; };
 window.Telegram?.WebApp?.ready();
 
+// PDF text: group items into lines by y position, join wrapped lines, and treat
+// a vertical gap bigger than a normal line spacing as a paragraph break.
+async function pdfText(file) {
+  const pdfjs = await import("https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs");
+  pdfjs.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs";
+  const pdf = await pdfjs.getDocument({ data: await file.arrayBuffer() }).promise;
+  const pages = [];
+  for (let n = 1; n <= pdf.numPages; n++) {
+    const items = (await (await pdf.getPage(n)).getTextContent()).items.filter(i => i.str !== undefined);
+    const lines = [];
+    for (const it of items) {
+      const y = it.transform[5], h = it.height || Math.abs(it.transform[3]) || 10;
+      const last = lines[lines.length - 1];
+      if (last && Math.abs(last.y - y) < h * 0.5) last.s += it.str;
+      else lines.push({ y, h, s: it.str });
+    }
+    const real = lines.filter(l => l.s.trim());
+    if (!real.length) continue;
+    // headings: "Chapter 1", numbered titles, ALL CAPS, or short lines in a larger font
+    const hs = real.map(l => l.h).sort((a, b) => a - b), body = hs[Math.floor(hs.length / 2)];
+    const lens = real.map(l => l.s.trim().length).sort((a, b) => a - b), typical = lens[Math.floor(lens.length / 2)];
+    for (const l of real) {
+      const t = l.s.trim();
+      l.heading = t.length <= 80 && (
+        (/^(chapter|part|book|section|prologue|epilogue|appendix|introduction|preface|contents)\b/i.test(t) && t.length < 60) ||
+        /^\d+(\.\d+)*\.?\s+\S/.test(t) && t.length < 60 && !/[.!?,;:]$/.test(t) ||
+        (t === t.toUpperCase() && /[A-Z]{3}/.test(t)) ||
+        (!/[.!?,;:-]$/.test(t) && t.length < 50 && (l.h > body * 1.15 || t.length < typical * 0.5) && /^[A-Z]/.test(t))
+      );
+    }
+    const gaps = real.slice(1).map((l, i) => Math.abs(real[i].y - l.y)).sort((a, b) => a - b);
+    // lower quartile ~ ordinary line spacing; paragraph gaps are the larger minority
+    const normal = gaps.length ? gaps[Math.floor(gaps.length / 4)] : 0;
+    let out = "", prev = null;
+    for (const l of real) {
+      let t = l.s.trim();
+      if (prev !== null) {
+        const gap = Math.abs(prev.y - l.y);
+        if (l.heading || prev.heading) out += "\n\n";
+        else if (normal && gap > normal * 1.4) out += "\n";
+        else if (out.endsWith("-") && /^[a-z]/.test(t)) out = out.slice(0, -1);
+        else out += " ";
+      }
+      out += t; prev = l;
+    }
+    pages.push(out);
+  }
+  if (!pages.length) throw new Error("No text found. It may be a scanned PDF (images only).");
+  return pages.join("\n\n");
+}
+
 $("file").onchange = async e => {
   const f = e.target.files[0];
-  if (f) $("text").value = await f.text();
+  if (!f) return;
+  try {
+    $("text").value = /\.pdf$/i.test(f.name) || f.type === "application/pdf"
+      ? (log("Reading PDF…"), await pdfText(f)) : await f.text();
+  } catch (err) { log("Could not read file: " + err.message); }
 };
+
+// Default backend: WebGPU on desktop when an adapter exists, WASM on phones
+// (WebGPU fp32 produced garbled audio on a phone). A manual choice is remembered.
+const store = {
+  get: k => { try { return localStorage.getItem(k); } catch { return null; } },
+  set: (k, v) => { try { localStorage.setItem(k, v); } catch {} },
+};
+const isMobile = navigator.userAgentData?.mobile ?? /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+(async () => {
+  const sel = $("backend");
+  let gpu = false;
+  try { gpu = !!(navigator.gpu && await navigator.gpu.requestAdapter()); } catch {}
+  if (!gpu) sel.querySelector('[value="webgpu"]').disabled = true;
+  const saved = store.get("backend");
+  sel.value = saved === "wasm" || (saved === "webgpu" && gpu) ? saved : (gpu && !isMobile ? "webgpu" : "wasm");
+})();
+$("backend").onchange = e => store.set("backend", e.target.value);
 
 let tts, ttsKey;
 async function load() {
   const mode = $("backend").value;
   if (mode === "webgpu" && !navigator.gpu) throw new Error("WebGPU is not available on this device.");
   if (tts && ttsKey === mode) return tts;
-  const opts = mode === "webgpu" ? { dtype: "fp32", device: "webgpu" } : { dtype: "q8", device: "wasm" };
-  log(`Loading model with ${opts.device}/${opts.dtype} (first run downloads it)…`);
-  tts = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", opts);
-  ttsKey = mode;
+  const load1 = m => {
+    const opts = m === "webgpu" ? { dtype: "fp32", device: "webgpu" } : { dtype: "q8", device: "wasm" };
+    log(`Loading model with ${opts.device}/${opts.dtype} (first run downloads it)…`);
+    return KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", opts);
+  };
+  try {
+    tts = await load1(mode); ttsKey = mode;
+  } catch (e) {
+    if (mode !== "webgpu") throw e;
+    log("WebGPU failed (" + e.message + "), falling back to WASM.");
+    $("backend").value = "wasm";
+    tts = await load1("wasm"); ttsKey = "wasm";
+  }
   return tts;
 }
 
 // Returns [{ text, pause }]: pause is a multiplier of the base pause that
 // follows this chunk (1 after a line break, 2 after a blank line, 0 mid-line).
+// Kokoro treats ":" as a long pause, so times become "7 30" (read "seven thirty").
+function normalize(text) {
+  return text.replace(/(?<![\d:.])(\d{1,2}):([0-5]\d)(?![\d:])/g, (_, h, m) =>
+    m === "00" ? `${h} o'clock` : m[0] === "0" ? `${h} oh ${+m}` : `${h} ${m}`);
+}
+
 function sentences(text) {
   const out = [];
-  const lines = text.replace(/\r\n?/g, "\n").split("\n");
+  const lines = normalize(text).replace(/\r\n?/g, "\n").split("\n");
   let blank = 0;
   const flush = (cur, last) => { if (cur.trim()) out.push({ text: cur, pause: 0 }); };
   for (const line of lines) {

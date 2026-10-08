@@ -40,7 +40,7 @@ Telegram bot (Python)  --button-->  Mini App (static HTML/JS, HTTPS)
 | F4 | Show progress and real-time factor | Done |
 | F5 | Play result and offer WAV download | Done |
 | F6 | Speed control | Todo |
-| F7 | PDF / EPUB / DOCX text extraction | Todo |
+| F7 | PDF (done, bot + Mini App) / EPUB / DOCX text extraction | Partial |
 | F8 | MP3/Opus encoding to shrink output | Todo |
 | F9 | Telegram bot with WebApp button and allowlist | Todo |
 | F10 | Resume/cancel long jobs; avoid losing work when the app is backgrounded | Todo |

@@ -4,3 +4,4 @@ soundfile
 # bot (planned)
 python-telegram-bot
 python-dotenv
+pypdf
