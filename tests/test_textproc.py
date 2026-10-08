@@ -19,6 +19,17 @@ def test_time_normalization(src, expected):
     assert normalize(src) == expected
 
 
+@pytest.mark.parametrize("src,expected", [
+    ("Dr. Smith lives on Elm St. near the park.", "Dr. Smith lives on Elm Street near the park."),
+    ("He moved to Baker St.", "He moved to Baker Street."),
+    ("Turn left on Main St., then right.", "Turn left on Main Street, then right."),
+    ("She visited St. Louis last year.", "She visited Saint Louis last year."),
+    ("It was the 1st St. of the list", "It was the 1st St. of the list"),   # not a street name: left alone
+])
+def test_st_abbreviation(src, expected):
+    assert normalize(src) == expected
+
+
 def test_line_break_pauses():
     out = chunks("Line one. Two.\nLine three\n\nPara two. End")
     assert out == [["Line one. Two.", 1], ["Line three", 2], ["Para two. End", 0]]

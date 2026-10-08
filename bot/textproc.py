@@ -11,8 +11,19 @@ def _say_time(m: re.Match) -> str:
     return f"{h} oh {int(mi)}" if mi[0] == "0" else f"{h} {mi}"
 
 
+# "Elm St. near" -> Street (after a capitalized word, before a lowercase word or the end);
+# "St. Louis" -> Saint. Kokoro reads a bare "St." as "sent".
+_STREET_END = re.compile(r"\b([A-Z][a-z]+) St\.(?=[ \t]*$)", re.M)       # keeps the sentence-final period
+_STREET = re.compile(r"\b([A-Z][a-z]+) St\.(?=\s+[a-z]|[,;:!?)])")
+_SAINT = re.compile(r"\bSt\.\s+(?=[A-Z])")
+
+
 def normalize(text: str) -> str:
-    """Kokoro treats ':' as a long pause, so '7:30' becomes '7 30' (read 'seven thirty')."""
+    """Prepare text for Kokoro: '7:30' becomes '7 30' (':' is read as a long pause) and
+    'Elm St.' becomes 'Elm Street'."""
+    text = _STREET_END.sub(r"\1 Street.", text)
+    text = _STREET.sub(r"\1 Street", text)
+    text = _SAINT.sub("Saint ", text)
     return _TIME.sub(_say_time, text)
 
 

@@ -8,8 +8,8 @@
   "word_errors": 2,
   "ref_words": 9,
   "audio_s": 2.91,
-  "synth_s": 0.068,
-  "speed_x": 42.89,
+  "synth_s": 0.07,
+  "speed_x": 41.46,
   "max_silence_s": 0.05
  },
  {
@@ -21,8 +21,8 @@
   "word_errors": 0,
   "ref_words": 8,
   "audio_s": 3.31,
-  "synth_s": 0.065,
-  "speed_x": 50.86,
+  "synth_s": 0.09,
+  "speed_x": 36.61,
   "max_silence_s": 0.34
  },
  {
@@ -34,8 +34,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 3.6,
-  "synth_s": 0.064,
-  "speed_x": 56.36,
+  "synth_s": 0.066,
+  "speed_x": 54.65,
   "max_silence_s": 0.05
  },
  {
@@ -48,7 +48,7 @@
   "ref_words": 11,
   "audio_s": 3.4,
   "synth_s": 0.067,
-  "speed_x": 50.45,
+  "speed_x": 50.86,
   "max_silence_s": 0.1
  },
  {
@@ -60,8 +60,8 @@
   "word_errors": 5,
   "ref_words": 10,
   "audio_s": 3.59,
-  "synth_s": 0.064,
-  "speed_x": 55.94,
+  "synth_s": 0.069,
+  "speed_x": 51.94,
   "max_silence_s": 0.03
  },
  {
@@ -73,8 +73,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.85,
-  "synth_s": 0.064,
-  "speed_x": 44.57,
+  "synth_s": 0.068,
+  "speed_x": 42.09,
   "max_silence_s": 0.04
  },
  {
@@ -86,8 +86,8 @@
   "word_errors": 4,
   "ref_words": 15,
   "audio_s": 4.05,
-  "synth_s": 0.081,
-  "speed_x": 49.77,
+  "synth_s": 0.064,
+  "speed_x": 63.44,
   "max_silence_s": 0.1
  },
  {
@@ -99,8 +99,8 @@
   "word_errors": 2,
   "ref_words": 9,
   "audio_s": 2.64,
-  "synth_s": 0.071,
-  "speed_x": 36.93,
+  "synth_s": 0.069,
+  "speed_x": 38.24,
   "max_silence_s": 0.04
  },
  {
@@ -112,8 +112,8 @@
   "word_errors": 1,
   "ref_words": 12,
   "audio_s": 4.4,
-  "synth_s": 0.067,
-  "speed_x": 65.7,
+  "synth_s": 0.066,
+  "speed_x": 66.37,
   "max_silence_s": 0.11
  },
  {
@@ -125,8 +125,8 @@
   "word_errors": 2,
   "ref_words": 11,
   "audio_s": 2.68,
-  "synth_s": 0.071,
-  "speed_x": 37.94,
+  "synth_s": 0.068,
+  "speed_x": 39.32,
   "max_silence_s": 0.05
  },
  {
@@ -138,8 +138,8 @@
   "word_errors": 6,
   "ref_words": 14,
   "audio_s": 4.17,
-  "synth_s": 0.071,
-  "speed_x": 58.84,
+  "synth_s": 0.067,
+  "speed_x": 62.09,
   "max_silence_s": 0.1
  },
  {
@@ -151,8 +151,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 3.0,
-  "synth_s": 0.064,
-  "speed_x": 46.71,
+  "synth_s": 0.067,
+  "speed_x": 45.03,
   "max_silence_s": 0.11
  },
  {
@@ -164,8 +164,8 @@
   "word_errors": 1,
   "ref_words": 11,
   "audio_s": 3.14,
-  "synth_s": 0.066,
-  "speed_x": 47.83,
+  "synth_s": 0.067,
+  "speed_x": 46.54,
   "max_silence_s": 0.05
  },
  {
@@ -177,8 +177,8 @@
   "word_errors": 1,
   "ref_words": 11,
   "audio_s": 3.94,
-  "synth_s": 0.07,
-  "speed_x": 56.09,
+  "synth_s": 0.067,
+  "speed_x": 58.57,
   "max_silence_s": 0.05
  },
  {
@@ -190,8 +190,8 @@
   "word_errors": 0,
   "ref_words": 13,
   "audio_s": 4.71,
-  "synth_s": 0.068,
-  "speed_x": 69.65,
+  "synth_s": 0.066,
+  "speed_x": 70.86,
   "max_silence_s": 0.1
  },
  {
@@ -203,8 +203,8 @@
   "word_errors": 5,
   "ref_words": 9,
   "audio_s": 2.72,
-  "synth_s": 0.065,
-  "speed_x": 41.82,
+  "synth_s": 0.067,
+  "speed_x": 40.31,
   "max_silence_s": 0.05
  },
  {
@@ -216,8 +216,8 @@
   "word_errors": 0,
   "ref_words": 7,
   "audio_s": 2.57,
-  "synth_s": 0.073,
-  "speed_x": 35.45,
+  "synth_s": 0.066,
+  "speed_x": 39.25,
   "max_silence_s": 0.05
  },
  {
@@ -229,8 +229,8 @@
   "word_errors": 1,
   "ref_words": 9,
   "audio_s": 2.87,
-  "synth_s": 0.078,
-  "speed_x": 36.62,
+  "synth_s": 0.064,
+  "speed_x": 44.52,
   "max_silence_s": 0.29
  },
  {
@@ -242,8 +242,8 @@
   "word_errors": 0,
   "ref_words": 8,
   "audio_s": 2.7,
-  "synth_s": 0.074,
-  "speed_x": 36.5,
+  "synth_s": 0.068,
+  "speed_x": 39.91,
   "max_silence_s": 0.04
  },
  {
@@ -255,8 +255,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.69,
-  "synth_s": 0.066,
-  "speed_x": 41.05,
+  "synth_s": 0.074,
+  "speed_x": 36.45,
   "max_silence_s": 0.1
  },
  {
@@ -268,8 +268,8 @@
   "word_errors": 4,
   "ref_words": 35,
   "audio_s": 11.03,
-  "synth_s": 0.08,
-  "speed_x": 138.07,
+  "synth_s": 0.071,
+  "speed_x": 155.48,
   "max_silence_s": 0.1
  },
  {
@@ -281,8 +281,8 @@
   "word_errors": 1,
   "ref_words": 37,
   "audio_s": 9.25,
-  "synth_s": 0.077,
-  "speed_x": 119.8,
+  "synth_s": 0.072,
+  "speed_x": 128.78,
   "max_silence_s": 0.1
  },
  {
@@ -293,9 +293,9 @@
   "heard": "The quick brown fox jumps over the lazy dog.",
   "word_errors": 0,
   "ref_words": 9,
-  "audio_s": 2.6,
-  "synth_s": 0.101,
-  "speed_x": 25.74,
+  "audio_s": 2.54,
+  "synth_s": 0.105,
+  "speed_x": 24.28,
   "max_silence_s": 0.06
  },
  {
@@ -303,13 +303,13 @@
   "id": "s02",
   "category": "plain",
   "text": "Good morning. Today we are testing speech synthesis.",
-  "heard": "Good morning, today we are testing speech synthesis.",
+  "heard": "Good morning. Today we are testing speech synthesis.",
   "word_errors": 0,
   "ref_words": 8,
-  "audio_s": 3.2,
-  "synth_s": 0.139,
-  "speed_x": 23.12,
-  "max_silence_s": 0.21
+  "audio_s": 3.16,
+  "synth_s": 0.129,
+  "speed_x": 24.51,
+  "max_silence_s": 0.1
  },
  {
   "engine": "piper",
@@ -319,22 +319,22 @@
   "heard": "The rain fell softly on the quiet town while everyone slept.",
   "word_errors": 0,
   "ref_words": 11,
-  "audio_s": 3.45,
-  "synth_s": 0.137,
-  "speed_x": 25.22,
-  "max_silence_s": 0.06
+  "audio_s": 3.46,
+  "synth_s": 0.139,
+  "speed_x": 24.96,
+  "max_silence_s": 0.09
  },
  {
   "engine": "piper",
   "id": "s04",
   "category": "plain",
   "text": "She opened the old wooden door and stepped into the garden.",
-  "heard": "She opened the old wooden door and stepped into the garden.",
-  "word_errors": 0,
+  "heard": "you open the old wooden door and stepped into the garden.",
+  "word_errors": 2,
   "ref_words": 11,
-  "audio_s": 3.0,
-  "synth_s": 0.129,
-  "speed_x": 23.24,
+  "audio_s": 2.88,
+  "synth_s": 0.117,
+  "speed_x": 24.66,
   "max_silence_s": 0.05
  },
  {
@@ -345,9 +345,9 @@
   "heard": "The museum has 1984 books in its collection.",
   "word_errors": 0,
   "ref_words": 10,
-  "audio_s": 3.27,
-  "synth_s": 0.139,
-  "speed_x": 23.5,
+  "audio_s": 3.16,
+  "synth_s": 0.122,
+  "speed_x": 25.81,
   "max_silence_s": 0.05
  },
  {
@@ -358,10 +358,10 @@
   "heard": "She scored 98 points in the final game.",
   "word_errors": 0,
   "ref_words": 9,
-  "audio_s": 2.46,
-  "synth_s": 0.112,
-  "speed_x": 21.99,
-  "max_silence_s": 0.08
+  "audio_s": 2.45,
+  "synth_s": 0.097,
+  "speed_x": 25.19,
+  "max_silence_s": 0.07
  },
  {
   "engine": "piper",
@@ -371,9 +371,9 @@
   "heard": "There are 365 days in a year and 52 weeks.",
   "word_errors": 0,
   "ref_words": 15,
-  "audio_s": 3.68,
-  "synth_s": 0.155,
-  "speed_x": 23.71,
+  "audio_s": 3.59,
+  "synth_s": 0.141,
+  "speed_x": 25.41,
   "max_silence_s": 0.07
  },
  {
@@ -384,10 +384,10 @@
   "heard": "He lives on the third floor of Building 12.",
   "word_errors": 0,
   "ref_words": 9,
-  "audio_s": 2.46,
-  "synth_s": 0.104,
-  "speed_x": 23.58,
-  "max_silence_s": 0.06
+  "audio_s": 2.59,
+  "synth_s": 0.102,
+  "speed_x": 25.44,
+  "max_silence_s": 0.08
  },
  {
   "engine": "piper",
@@ -397,10 +397,10 @@
   "heard": "The package weighs 250 grams and costs $17.",
   "word_errors": 0,
   "ref_words": 12,
-  "audio_s": 3.78,
-  "synth_s": 0.147,
-  "speed_x": 25.81,
-  "max_silence_s": 0.06
+  "audio_s": 3.72,
+  "synth_s": 0.146,
+  "speed_x": 25.36,
+  "max_silence_s": 0.05
  },
  {
   "engine": "piper",
@@ -410,10 +410,10 @@
   "heard": "Every day at 730 my alarm went off.",
   "word_errors": 0,
   "ref_words": 11,
-  "audio_s": 2.74,
-  "synth_s": 0.108,
-  "speed_x": 25.26,
-  "max_silence_s": 0.05
+  "audio_s": 2.68,
+  "synth_s": 0.103,
+  "speed_x": 25.95,
+  "max_silence_s": 0.04
  },
  {
   "engine": "piper",
@@ -423,9 +423,9 @@
   "heard": "The meeting starts at 12.00 and ends at 4.45.",
   "word_errors": 0,
   "ref_words": 14,
-  "audio_s": 3.84,
-  "synth_s": 0.149,
-  "speed_x": 25.83,
+  "audio_s": 3.92,
+  "synth_s": 0.153,
+  "speed_x": 25.65,
   "max_silence_s": 0.05
  },
  {
@@ -436,23 +436,23 @@
   "heard": "I got home at 6.05 and cooked dinner.",
   "word_errors": 0,
   "ref_words": 11,
-  "audio_s": 2.65,
-  "synth_s": 0.112,
-  "speed_x": 23.62,
-  "max_silence_s": 0.06
+  "audio_s": 2.64,
+  "synth_s": 0.105,
+  "speed_x": 25.08,
+  "max_silence_s": 0.07
  },
  {
   "engine": "piper",
   "id": "s13",
   "category": "times",
   "text": "The train leaves at 9:15 from platform 4.",
-  "heard": "The train leaves at 9.15 from Platform 4.",
+  "heard": "The train leaves at 9.15 from platform 4.",
   "word_errors": 0,
   "ref_words": 11,
-  "audio_s": 3.01,
-  "synth_s": 0.132,
-  "speed_x": 22.8,
-  "max_silence_s": 0.06
+  "audio_s": 3.15,
+  "synth_s": 0.127,
+  "speed_x": 24.82,
+  "max_silence_s": 0.08
  },
  {
   "engine": "piper",
@@ -462,10 +462,10 @@
   "heard": "The conference took place in March 2024 in Berlin.",
   "word_errors": 0,
   "ref_words": 11,
-  "audio_s": 3.32,
-  "synth_s": 0.141,
-  "speed_x": 23.58,
-  "max_silence_s": 0.06
+  "audio_s": 3.4,
+  "synth_s": 0.132,
+  "speed_x": 25.84,
+  "max_silence_s": 0.05
  },
  {
   "engine": "piper",
@@ -475,49 +475,49 @@
   "heard": "She was born in 1999 and moved here in 2015.",
   "word_errors": 0,
   "ref_words": 13,
-  "audio_s": 4.26,
-  "synth_s": 0.173,
-  "speed_x": 24.62,
-  "max_silence_s": 0.04
+  "audio_s": 4.28,
+  "synth_s": 0.17,
+  "speed_x": 25.17,
+  "max_silence_s": 0.05
  },
  {
   "engine": "piper",
   "id": "s16",
   "category": "abbreviations",
   "text": "Dr. Smith lives on Elm St. near the park.",
-  "heard": "Doctor, Smith lives on Eln scint near the park.",
-  "word_errors": 2,
+  "heard": "Doctor Smith lives on Elton St. near the park.",
+  "word_errors": 1,
   "ref_words": 9,
-  "audio_s": 3.04,
-  "synth_s": 0.133,
-  "speed_x": 22.91,
-  "max_silence_s": 0.4
+  "audio_s": 2.88,
+  "synth_s": 0.117,
+  "speed_x": 24.62,
+  "max_silence_s": 0.29
  },
  {
   "engine": "piper",
   "id": "s17",
   "category": "abbreviations",
   "text": "Mr. Jones met Mrs. Brown for lunch.",
-  "heard": "Mr. Jones Met Misses, Brown for lunch.",
+  "heard": "Mr. Jones Met Mrs. Brown for lunch.",
   "word_errors": 0,
   "ref_words": 7,
-  "audio_s": 2.83,
-  "synth_s": 0.125,
-  "speed_x": 22.64,
-  "max_silence_s": 0.24
+  "audio_s": 2.96,
+  "synth_s": 0.129,
+  "speed_x": 22.88,
+  "max_silence_s": 0.23
  },
  {
   "engine": "piper",
   "id": "s18",
   "category": "abbreviations",
   "text": "The match was Spain vs. Italy in the final.",
-  "heard": "The match was spaying the S, Italy in the final.",
-  "word_errors": 3,
+  "heard": "The match was Spain vs Italy in the final.",
+  "word_errors": 0,
   "ref_words": 9,
-  "audio_s": 2.72,
-  "synth_s": 0.115,
-  "speed_x": 23.63,
-  "max_silence_s": 0.25
+  "audio_s": 2.58,
+  "synth_s": 0.105,
+  "speed_x": 24.44,
+  "max_silence_s": 0.15
  },
  {
   "engine": "piper",
@@ -527,10 +527,10 @@
   "heard": "Can you tell whether this voice sounds natural?",
   "word_errors": 0,
   "ref_words": 8,
-  "audio_s": 2.71,
-  "synth_s": 0.112,
-  "speed_x": 24.06,
-  "max_silence_s": 0.04
+  "audio_s": 2.31,
+  "synth_s": 0.094,
+  "speed_x": 24.68,
+  "max_silence_s": 0.03
  },
  {
   "engine": "piper",
@@ -540,23 +540,23 @@
   "heard": "Where did you put the keys and why are they missing?",
   "word_errors": 0,
   "ref_words": 11,
-  "audio_s": 2.32,
-  "synth_s": 0.115,
-  "speed_x": 20.22,
-  "max_silence_s": 0.06
+  "audio_s": 2.62,
+  "synth_s": 0.1,
+  "speed_x": 26.34,
+  "max_silence_s": 0.07
  },
  {
   "engine": "piper",
   "id": "s21",
   "category": "long",
   "text": "Speech synthesis has improved a great deal in recent years because modern neural models sound far more natural than the older rule based engines that came before them and they now run on ordinary laptops.",
-  "heard": "Beach synthesis has improved a great deal in recent years, because modern Euro models sound far more natural than the older rule-based engines that came before them and they now run on ordinary laptops.",
+  "heard": "Beach Synthesis has improved a great deal in recent years, because modern Euro models sound far more natural than the older rule-based engines that came before them, and they now run on ordinary laptops.",
   "word_errors": 2,
   "ref_words": 35,
-  "audio_s": 10.83,
-  "synth_s": 0.434,
-  "speed_x": 24.93,
-  "max_silence_s": 0.46
+  "audio_s": 11.53,
+  "synth_s": 0.43,
+  "speed_x": 26.83,
+  "max_silence_s": 0.43
  },
  {
   "engine": "piper",
@@ -566,10 +566,10 @@
   "heard": "When the sun finally came up over the hills the whole valley was covered in a thin layer of mist and the farmers began to lead their cows out of the barns toward the wet green fields.",
   "word_errors": 0,
   "ref_words": 37,
-  "audio_s": 9.23,
-  "synth_s": 0.365,
-  "speed_x": 25.31,
-  "max_silence_s": 0.44
+  "audio_s": 8.93,
+  "synth_s": 0.34,
+  "speed_x": 26.29,
+  "max_silence_s": 0.12
  },
  {
   "engine": "kokoro_raw",
@@ -580,8 +580,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.67,
-  "synth_s": 0.876,
-  "speed_x": 3.04,
+  "synth_s": 0.884,
+  "speed_x": 3.02,
   "max_silence_s": 0.13
  },
  {
@@ -593,8 +593,8 @@
   "word_errors": 0,
   "ref_words": 8,
   "audio_s": 2.9,
-  "synth_s": 0.952,
-  "speed_x": 3.05,
+  "synth_s": 0.944,
+  "speed_x": 3.07,
   "max_silence_s": 0.31
  },
  {
@@ -606,8 +606,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 3.5,
-  "synth_s": 1.11,
-  "speed_x": 3.15,
+  "synth_s": 1.096,
+  "speed_x": 3.19,
   "max_silence_s": 0.29
  },
  {
@@ -619,8 +619,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.99,
-  "synth_s": 0.967,
-  "speed_x": 3.09,
+  "synth_s": 0.963,
+  "speed_x": 3.1,
   "max_silence_s": 0.25
  },
  {
@@ -645,8 +645,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.37,
-  "synth_s": 0.848,
-  "speed_x": 2.79,
+  "synth_s": 0.803,
+  "speed_x": 2.95,
   "max_silence_s": 0.07
  },
  {
@@ -658,8 +658,8 @@
   "word_errors": 0,
   "ref_words": 15,
   "audio_s": 3.75,
-  "synth_s": 1.353,
-  "speed_x": 2.78,
+  "synth_s": 1.196,
+  "speed_x": 3.14,
   "max_silence_s": 0.29
  },
  {
@@ -671,8 +671,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.33,
-  "synth_s": 0.78,
-  "speed_x": 2.98,
+  "synth_s": 0.776,
+  "speed_x": 3.0,
   "max_silence_s": 0.11
  },
  {
@@ -684,8 +684,8 @@
   "word_errors": 0,
   "ref_words": 12,
   "audio_s": 3.93,
-  "synth_s": 1.241,
-  "speed_x": 3.16,
+  "synth_s": 1.223,
+  "speed_x": 3.21,
   "max_silence_s": 0.32
  },
  {
@@ -697,8 +697,8 @@
   "word_errors": 2,
   "ref_words": 11,
   "audio_s": 2.77,
-  "synth_s": 0.909,
-  "speed_x": 3.05,
+  "synth_s": 0.895,
+  "speed_x": 3.1,
   "max_silence_s": 0.32
  },
  {
@@ -710,8 +710,8 @@
   "word_errors": 4,
   "ref_words": 14,
   "audio_s": 4.27,
-  "synth_s": 1.315,
-  "speed_x": 3.24,
+  "synth_s": 1.33,
+  "speed_x": 3.21,
   "max_silence_s": 0.34
  },
  {
@@ -723,7 +723,7 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.99,
-  "synth_s": 0.979,
+  "synth_s": 0.978,
   "speed_x": 3.05,
   "max_silence_s": 0.25
  },
@@ -736,8 +736,8 @@
   "word_errors": 2,
   "ref_words": 11,
   "audio_s": 3.03,
-  "synth_s": 0.982,
-  "speed_x": 3.08,
+  "synth_s": 0.971,
+  "speed_x": 3.12,
   "max_silence_s": 0.28
  },
  {
@@ -749,8 +749,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 3.71,
-  "synth_s": 1.179,
-  "speed_x": 3.15,
+  "synth_s": 1.166,
+  "speed_x": 3.18,
   "max_silence_s": 0.15
  },
  {
@@ -762,8 +762,8 @@
   "word_errors": 0,
   "ref_words": 13,
   "audio_s": 4.33,
-  "synth_s": 1.38,
-  "speed_x": 3.14,
+  "synth_s": 1.368,
+  "speed_x": 3.17,
   "max_silence_s": 0.33
  },
  {
@@ -775,7 +775,7 @@
   "word_errors": 2,
   "ref_words": 9,
   "audio_s": 2.92,
-  "synth_s": 0.931,
+  "synth_s": 0.932,
   "speed_x": 3.14,
   "max_silence_s": 0.32
  },
@@ -788,8 +788,8 @@
   "word_errors": 0,
   "ref_words": 7,
   "audio_s": 2.71,
-  "synth_s": 0.878,
-  "speed_x": 3.09,
+  "synth_s": 0.883,
+  "speed_x": 3.07,
   "max_silence_s": 0.3
  },
  {
@@ -801,8 +801,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.69,
-  "synth_s": 0.885,
-  "speed_x": 3.04,
+  "synth_s": 0.881,
+  "speed_x": 3.05,
   "max_silence_s": 0.26
  },
  {
@@ -814,8 +814,8 @@
   "word_errors": 0,
   "ref_words": 8,
   "audio_s": 2.22,
-  "synth_s": 0.768,
-  "speed_x": 2.89,
+  "synth_s": 0.762,
+  "speed_x": 2.91,
   "max_silence_s": 0.05
  },
  {
@@ -840,8 +840,8 @@
   "word_errors": 0,
   "ref_words": 35,
   "audio_s": 12.63,
-  "synth_s": 3.657,
-  "speed_x": 3.45,
+  "synth_s": 3.673,
+  "speed_x": 3.44,
   "max_silence_s": 0.49
  },
  {
@@ -853,8 +853,8 @@
   "word_errors": 0,
   "ref_words": 37,
   "audio_s": 10.28,
-  "synth_s": 3.033,
-  "speed_x": 3.39,
+  "synth_s": 2.997,
+  "speed_x": 3.43,
   "max_silence_s": 0.43
  },
  {
@@ -866,8 +866,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.67,
-  "synth_s": 0.871,
-  "speed_x": 3.06,
+  "synth_s": 0.868,
+  "speed_x": 3.07,
   "max_silence_s": 0.13
  },
  {
@@ -879,8 +879,8 @@
   "word_errors": 0,
   "ref_words": 8,
   "audio_s": 2.9,
-  "synth_s": 0.986,
-  "speed_x": 2.94,
+  "synth_s": 0.94,
+  "speed_x": 3.09,
   "max_silence_s": 0.31
  },
  {
@@ -892,8 +892,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 3.5,
-  "synth_s": 1.115,
-  "speed_x": 3.14,
+  "synth_s": 1.089,
+  "speed_x": 3.21,
   "max_silence_s": 0.29
  },
  {
@@ -905,8 +905,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.99,
-  "synth_s": 0.967,
-  "speed_x": 3.09,
+  "synth_s": 0.97,
+  "speed_x": 3.08,
   "max_silence_s": 0.25
  },
  {
@@ -918,8 +918,8 @@
   "word_errors": 0,
   "ref_words": 10,
   "audio_s": 3.41,
-  "synth_s": 1.099,
-  "speed_x": 3.1,
+  "synth_s": 1.089,
+  "speed_x": 3.13,
   "max_silence_s": 0.21
  },
  {
@@ -931,8 +931,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.37,
-  "synth_s": 0.794,
-  "speed_x": 2.98,
+  "synth_s": 0.793,
+  "speed_x": 2.99,
   "max_silence_s": 0.07
  },
  {
@@ -944,8 +944,8 @@
   "word_errors": 0,
   "ref_words": 15,
   "audio_s": 3.75,
-  "synth_s": 1.189,
-  "speed_x": 3.16,
+  "synth_s": 1.195,
+  "speed_x": 3.14,
   "max_silence_s": 0.29
  },
  {
@@ -957,8 +957,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.33,
-  "synth_s": 0.785,
-  "speed_x": 2.96,
+  "synth_s": 0.772,
+  "speed_x": 3.01,
   "max_silence_s": 0.11
  },
  {
@@ -970,8 +970,8 @@
   "word_errors": 0,
   "ref_words": 12,
   "audio_s": 3.93,
-  "synth_s": 1.218,
-  "speed_x": 3.22,
+  "synth_s": 1.231,
+  "speed_x": 3.19,
   "max_silence_s": 0.32
  },
  {
@@ -983,8 +983,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.62,
-  "synth_s": 0.873,
-  "speed_x": 3.01,
+  "synth_s": 0.868,
+  "speed_x": 3.02,
   "max_silence_s": 0.27
  },
  {
@@ -996,8 +996,8 @@
   "word_errors": 1,
   "ref_words": 14,
   "audio_s": 3.5,
-  "synth_s": 1.113,
-  "speed_x": 3.14,
+  "synth_s": 1.118,
+  "speed_x": 3.13,
   "max_silence_s": 0.28
  },
  {
@@ -1009,8 +1009,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.35,
-  "synth_s": 0.778,
-  "speed_x": 3.02,
+  "synth_s": 0.779,
+  "speed_x": 3.01,
   "max_silence_s": 0.04
  },
  {
@@ -1022,8 +1022,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.73,
-  "synth_s": 0.887,
-  "speed_x": 3.08,
+  "synth_s": 0.902,
+  "speed_x": 3.03,
   "max_silence_s": 0.03
  },
  {
@@ -1035,8 +1035,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 3.71,
-  "synth_s": 1.164,
-  "speed_x": 3.19,
+  "synth_s": 1.228,
+  "speed_x": 3.02,
   "max_silence_s": 0.15
  },
  {
@@ -1048,8 +1048,8 @@
   "word_errors": 0,
   "ref_words": 13,
   "audio_s": 4.33,
-  "synth_s": 1.375,
-  "speed_x": 3.15,
+  "synth_s": 1.379,
+  "speed_x": 3.14,
   "max_silence_s": 0.33
  },
  {
@@ -1057,13 +1057,13 @@
   "id": "s16",
   "category": "abbreviations",
   "text": "Dr. Smith lives on Elm St. near the park.",
-  "heard": "Dr. Smith lives on Elmsent, near the park.",
-  "word_errors": 2,
+  "heard": "Dr. Smith lives on Elm Street near the park.",
+  "word_errors": 0,
   "ref_words": 9,
-  "audio_s": 2.92,
-  "synth_s": 1.003,
-  "speed_x": 2.91,
-  "max_silence_s": 0.32
+  "audio_s": 2.67,
+  "synth_s": 0.891,
+  "speed_x": 2.99,
+  "max_silence_s": 0.24
  },
  {
   "engine": "kokoro",
@@ -1074,7 +1074,7 @@
   "word_errors": 0,
   "ref_words": 7,
   "audio_s": 2.71,
-  "synth_s": 0.873,
+  "synth_s": 0.874,
   "speed_x": 3.1,
   "max_silence_s": 0.3
  },
@@ -1087,8 +1087,8 @@
   "word_errors": 0,
   "ref_words": 9,
   "audio_s": 2.69,
-  "synth_s": 0.87,
-  "speed_x": 3.09,
+  "synth_s": 0.888,
+  "speed_x": 3.03,
   "max_silence_s": 0.26
  },
  {
@@ -1100,8 +1100,8 @@
   "word_errors": 0,
   "ref_words": 8,
   "audio_s": 2.22,
-  "synth_s": 0.773,
-  "speed_x": 2.87,
+  "synth_s": 0.769,
+  "speed_x": 2.89,
   "max_silence_s": 0.05
  },
  {
@@ -1113,8 +1113,8 @@
   "word_errors": 0,
   "ref_words": 11,
   "audio_s": 2.45,
-  "synth_s": 0.813,
-  "speed_x": 3.02,
+  "synth_s": 0.82,
+  "speed_x": 2.99,
   "max_silence_s": 0.21
  },
  {
@@ -1126,7 +1126,7 @@
   "word_errors": 0,
   "ref_words": 35,
   "audio_s": 12.63,
-  "synth_s": 3.646,
+  "synth_s": 3.651,
   "speed_x": 3.46,
   "max_silence_s": 0.49
  },
@@ -1139,8 +1139,8 @@
   "word_errors": 0,
   "ref_words": 37,
   "audio_s": 10.28,
-  "synth_s": 3.016,
-  "speed_x": 3.41,
+  "synth_s": 3.023,
+  "speed_x": 3.4,
   "max_silence_s": 0.43
  }
 ]

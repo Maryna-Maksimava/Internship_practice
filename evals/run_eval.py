@@ -105,6 +105,8 @@ def main():
     ap.add_argument("--whisper", default="base.en")
     ap.add_argument("--rescore", action="store_true",
                     help="recompute WER and the summary from results/results.json without synthesizing again")
+    ap.add_argument("--new-listening-sheet", action="store_true",
+                    help="create a fresh blinded rating sheet and key. DANGER: overwrites entered human ratings")
     ap.add_argument("--trim-listening", action="store_true",
                     help="shrink the existing listening sheet to the small subset, keeping entered ratings")
     a = ap.parse_args()
@@ -159,7 +161,10 @@ def main():
     RESULTS.mkdir(parents=True, exist_ok=True)
     (RESULTS / "results.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
     write_summary(rows)
-    write_listening_sheet(sentences, list(engines))
+    if a.new_listening_sheet:
+        write_listening_sheet(sentences, list(engines))
+    else:
+        print("listening sheets untouched (pass --new-listening-sheet to create fresh blinded ones)")
     print("wrote", RESULTS)
 
 

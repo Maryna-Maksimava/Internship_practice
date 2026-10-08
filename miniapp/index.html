@@ -164,8 +164,13 @@ async function load() {
 
 // Returns [{ text, pause }]: pause is a multiplier of the base pause that
 // follows this chunk (1 after a line break, 2 after a blank line, 0 mid-line).
-// Kokoro treats ":" as a long pause, so times become "7 30" (read "seven thirty").
+// Kokoro treats ":" as a long pause, so times become "7 30" (read "seven thirty"); a bare "St."
+// is read "sent", so "Elm St. near" becomes "Elm Street" and "St. Louis" becomes "Saint Louis".
 function normalize(text) {
+  text = text
+    .replace(/\b([A-Z][a-z]+) St\.(?=[ \t]*$)/gm, "$1 Street.")
+    .replace(/\b([A-Z][a-z]+) St\.(?=\s+[a-z]|[,;:!?)])/g, "$1 Street")
+    .replace(/\bSt\.\s+(?=[A-Z])/g, "Saint ");
   return text.replace(/(?<![\d:.])(\d{1,2}):([0-5]\d)(?![\d:])/g, (_, h, m) =>
     m === "00" ? `${h} o'clock` : m[0] === "0" ? `${h} oh ${+m}` : `${h} ${m}`);
 }

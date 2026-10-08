@@ -29,6 +29,7 @@ recorded; the session ran over roughly 2026-10-04 to 2026-10-08. "Human" = the p
 | 20 | Evals: 22-sentence test set, four systems, Whisper round trip, speed, silence metric | agent | first scoring was wrong (formatting artifacts); agent fixed the normalizer and rescored |
 | 21 | Listening sheet cut from 88 to 24 clips; human rated all 24 blind | human | Kokoro 5.0, Piper 3.2, eSpeak 1.0 (one rater) |
 | 22 | Evidence, reproduction guide, cloud plan, final report, presentation | agent | this batch |
+| 23 | Fixed the "St." misreading ("Elm St." to "Elm Street", "St. Louis" to "Saint Louis") in both text-preparation implementations, added golden tests, reran the eval; human ratings left untouched | agent (human asked) | Kokoro WER 1.1% to 0.4%; Piper also moved (2.5% to 1.8%) with no code change, which gives the run-to-run noise (about 1 point); eval script now creates a new rating sheet only with `--new-listening-sheet` |
 
 ## Agent mistakes and corrections (kept for honesty)
 
@@ -36,6 +37,7 @@ recorded; the session ran over roughly 2026-10-04 to 2026-10-08. "Human" = the p
 - The `bot/.env` placeholder stayed in place and the Mini App button pointed to a non-existent URL until the human reported it.
 - CI workflow shipped with invalid YAML; found by the human on GitHub.
 - First WER scoring counted "730" vs "7:30" and "$17" as errors; normalizer fixed and the same transcripts rescored.
+- The eval script regenerated the rating sheet on every full run, which would have overwritten the human's ratings; caught before the rerun, now behind a flag.
 - A draft sentence claimed Kokoro sounded more natural than Piper, which the human had not compared; replaced by the blind listening result.
 
 ## Things the agent could not do

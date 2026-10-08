@@ -4,20 +4,20 @@
 
 | Engine | WER | Speed (x real time) | Median longest silence (s) | Clips |
 |---|---|---|---|---|
-| espeak | 12.5% | 56.2 | 0.08 | 22 |
-| piper | 2.5% | 24.1 | 0.06 | 22 |
-| kokoro_raw | 3.6% | 3.1 | 0.29 | 22 |
-| kokoro | 1.1% | 3.2 | 0.27 | 22 |
+| espeak | 12.5% | 57.0 | 0.08 | 22 |
+| piper | 1.8% | 25.4 | 0.07 | 22 |
+| kokoro_raw | 3.6% | 3.2 | 0.29 | 22 |
+| kokoro | 0.4% | 3.2 | 0.26 | 22 |
 
 ## WER by category
 
 | Category | espeak | piper | kokoro_raw | kokoro |
 |---|---|---|---|---|
-| plain | 5.1% | 0.0% | 0.0% | 0.0% |
+| plain | 5.1% | 5.1% | 0.0% | 0.0% |
 | numbers | 21.8% | 0.0% | 0.0% | 0.0% |
 | times | 19.1% | 0.0% | 17.0% | 2.1% |
 | dates | 4.2% | 0.0% | 0.0% | 0.0% |
-| abbreviations | 24.0% | 20.0% | 8.0% | 8.0% |
+| abbreviations | 24.0% | 4.0% | 8.0% | 0.0% |
 | questions | 0.0% | 0.0% | 0.0% | 0.0% |
 | long | 6.9% | 2.8% | 0.0% | 0.0% |
 
@@ -25,10 +25,10 @@
 
 | Sentence | espeak | piper | kokoro_raw | kokoro |
 |---|---|---|---|---|
-| s10 Every day at 7:30 my alarm went off. | 0.05 | 0.05 | 0.32 | 0.27 |
+| s10 Every day at 7:30 my alarm went off. | 0.05 | 0.04 | 0.32 | 0.27 |
 | s11 The meeting starts at 12:00 and ends at 4:45. | 0.1 | 0.05 | 0.34 | 0.28 |
-| s12 I got home at 6:05 and cooked dinner. | 0.11 | 0.06 | 0.25 | 0.04 |
-| s13 The train leaves at 9:15 from platform 4. | 0.05 | 0.06 | 0.28 | 0.03 |
+| s12 I got home at 6:05 and cooked dinner. | 0.11 | 0.07 | 0.25 | 0.04 |
+| s13 The train leaves at 9:15 from platform 4. | 0.05 | 0.08 | 0.28 | 0.03 |
 
 ## Every word error
 
@@ -47,12 +47,11 @@
 | espeak | s18 | The match was Spain vs. Italy in the final. | The match was named VS, Italy in the final. |
 | espeak | s21 | Speech synthesis has improved a great deal in recent years because modern neural models sound far more natural than the older rule based engines that came before them and they now run on ordinary laptops. | Speech synthesis can improve the great deal in recent years, because modern neural models sound far more natural than the older rule-based engines that came before M and they now run on ordinary laptops. |
 | espeak | s22 | When the sun finally came up over the hills the whole valley was covered in a thin layer of mist and the farmers began to lead their cows out of the barns toward the wet green fields. | When the sun finally came up over the hill, the whole valley was covered in a thin layer of mist, and the farmers began to lead their cows out of the barns toward the wet green fields. |
-| piper | s16 | Dr. Smith lives on Elm St. near the park. | Doctor, Smith lives on Eln scint near the park. |
-| piper | s18 | The match was Spain vs. Italy in the final. | The match was spaying the S, Italy in the final. |
-| piper | s21 | Speech synthesis has improved a great deal in recent years because modern neural models sound far more natural than the older rule based engines that came before them and they now run on ordinary laptops. | Beach synthesis has improved a great deal in recent years, because modern Euro models sound far more natural than the older rule-based engines that came before them and they now run on ordinary laptops. |
+| piper | s04 | She opened the old wooden door and stepped into the garden. | you open the old wooden door and stepped into the garden. |
+| piper | s16 | Dr. Smith lives on Elm St. near the park. | Doctor Smith lives on Elton St. near the park. |
+| piper | s21 | Speech synthesis has improved a great deal in recent years because modern neural models sound far more natural than the older rule based engines that came before them and they now run on ordinary laptops. | Beach Synthesis has improved a great deal in recent years, because modern Euro models sound far more natural than the older rule-based engines that came before them, and they now run on ordinary laptops. |
 | kokoro_raw | s10 | Every day at 7:30 my alarm went off. | Every day at 7, 30, my alarm went off. |
 | kokoro_raw | s11 | The meeting starts at 12:00 and ends at 4:45. | The meeting starts at 12, 0-0 and ends at 4, 45. |
 | kokoro_raw | s13 | The train leaves at 9:15 from platform 4. | The train leaves at 9, 15 from Platform 4. |
 | kokoro_raw | s16 | Dr. Smith lives on Elm St. near the park. | Dr. Smith lives on Elmsent, near the park. |
 | kokoro | s11 | The meeting starts at 12:00 and ends at 4:45. | The meeting starts at 12 o'clock and ends at 4.45. |
-| kokoro | s16 | Dr. Smith lives on Elm St. near the park. | Dr. Smith lives on Elmsent, near the park. |
