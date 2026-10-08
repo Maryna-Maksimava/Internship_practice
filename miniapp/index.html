@@ -15,6 +15,10 @@
   button:disabled { opacity: .5; }
   pre { white-space: pre-wrap; font-size: .85rem; opacity: .8; }
   progress { width: 100%; }
+  #reader { max-height: 40vh; overflow-y: auto; margin: 12px 0; padding: 8px; border: 1px solid #8884; border-radius: 10px; line-height: 1.6; }
+  #reader span { cursor: pointer; border-radius: 4px; }
+  #reader .read { opacity: .5; }
+  #reader .cur { background: #ffd54a; color: #000; opacity: 1; }
 </style>
 </head>
 <body>
@@ -50,6 +54,7 @@
 <progress id="bar" value="0" max="1" hidden></progress>
 <pre id="log"></pre>
 <audio id="player" controls hidden></audio>
+<div id="reader" hidden></div>
 <a id="dl" download="speech.wav" hidden>Download WAV</a>
 
 <script type="module">
@@ -198,6 +203,35 @@ function wavBlob(chunks, sr) {
   return new Blob([buf], { type: "audio/wav" });
 }
 
+// Highlight the sentence being spoken, dim what was already read, click to jump.
+let readerSpans = [], readerStarts = [], readerCur = -1;
+function buildReader(parts, marks, sr) {
+  const box = $("reader"); box.replaceChildren();
+  readerSpans = parts.map((p, i) => {
+    const s = document.createElement("span");
+    s.textContent = p.text.trim() + " ";
+    s.onclick = () => { $("player").currentTime = readerStarts[i]; $("player").play().catch(() => {}); };
+    box.append(s);
+    if (p.pause) box.append(document.createElement("br"));
+    if (p.pause > 1) box.append(document.createElement("br"));
+    return s;
+  });
+  readerStarts = marks.map(m => m.start / sr);
+  readerCur = -1; box.hidden = false;
+}
+function syncReader() {
+  const t = $("player").currentTime;
+  let i = readerStarts.length - 1;
+  while (i > 0 && readerStarts[i] > t + 0.05) i--;
+  if (i === readerCur) return;
+  readerCur = i;
+  readerSpans.forEach((s, k) => { s.className = k < i ? "read" : k === i ? "cur" : ""; });
+  readerSpans[i]?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+$("player").addEventListener("timeupdate", syncReader);
+$("player").addEventListener("seeked", syncReader);
+$("player").addEventListener("play", syncReader);
+
 $("go").onclick = async () => {
   $("go").disabled = true; $("log").textContent = "";
   try {
@@ -206,11 +240,18 @@ $("go").onclick = async () => {
     const bar = $("bar"); bar.hidden = false; bar.max = parts.length; bar.value = 0;
     const chunks = []; let sr = 24000; const t0 = performance.now();
     const pauseSec = parseFloat($("pause").value) || 0;
+    let samples = 0; const marks = []; // marks[i] = { start, end } in samples of sentence i
     for (const p of parts) {
       const a = await model.generate(p.text, { voice: $("voice").value });
       chunks.push(a.audio); sr = a.sampling_rate; bar.value++;
-      if (p.pause && pauseSec) chunks.push(new Float32Array(Math.round(sr * pauseSec * p.pause)));
+      marks.push({ start: samples, end: samples + a.audio.length });
+      samples += a.audio.length;
+      if (p.pause && pauseSec) {
+        const gap = Math.round(sr * pauseSec * p.pause);
+        chunks.push(new Float32Array(gap)); samples += gap;
+      }
     }
+    buildReader(parts, marks, sr);
     const secs = chunks.reduce((a, c) => a + c.length, 0) / sr;
     const took = (performance.now() - t0) / 1000;
     log(`${secs.toFixed(1)}s of audio in ${took.toFixed(1)}s (${(secs / took).toFixed(1)}x real time)`);
