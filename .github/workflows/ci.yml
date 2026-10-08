@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install test dependencies (no model, no Telegram needed)
-        run: pip install pytest pypdf fpdf2
+        run: pip install pytest pypdf fpdf2 numpy num2words
       - name: Syntax check
         run: python -m compileall -q bot demo experiments
       - name: "Tests (the model smoke test is skipped here, no model files)"

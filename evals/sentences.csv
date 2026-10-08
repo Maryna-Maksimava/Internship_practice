@@ -1,0 +1,23 @@
+id,category,text
+s01,plain,The quick brown fox jumps over the lazy dog.
+s02,plain,Good morning. Today we are testing speech synthesis.
+s03,plain,The rain fell softly on the quiet town while everyone slept.
+s04,plain,She opened the old wooden door and stepped into the garden.
+s05,numbers,The museum has 1984 books in its collection.
+s06,numbers,She scored 98 points in the final game.
+s07,numbers,There are 365 days in a year and 52 weeks.
+s08,numbers,He lives on the 3rd floor of building 12.
+s09,numbers,The package weighs 250 grams and costs 17 dollars.
+s10,times,Every day at 7:30 my alarm went off.
+s11,times,The meeting starts at 12:00 and ends at 4:45.
+s12,times,I got home at 6:05 and cooked dinner.
+s13,times,The train leaves at 9:15 from platform 4.
+s14,dates,The conference took place in March 2024 in Berlin.
+s15,dates,She was born in 1999 and moved here in 2015.
+s16,abbreviations,Dr. Smith lives on Elm St. near the park.
+s17,abbreviations,Mr. Jones met Mrs. Brown for lunch.
+s18,abbreviations,The match was Spain vs. Italy in the final.
+s19,questions,Can you tell whether this voice sounds natural?
+s20,questions,Where did you put the keys and why are they missing?
+s21,long,Speech synthesis has improved a great deal in recent years because modern neural models sound far more natural than the older rule based engines that came before them and they now run on ordinary laptops.
+s22,long,When the sun finally came up over the hills the whole valley was covered in a thin layer of mist and the farmers began to lead their cows out of the barns toward the wet green fields.
