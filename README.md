@@ -12,12 +12,27 @@ https://maryna-maksimava.github.io/Internship_practice/miniapp/
 
 ```
 miniapp/       Static web page: runs Kokoro in the browser (kokoro-js, WebGPU/WASM). Works as a Telegram Mini App.
-bot/           Planned Telegram bot that opens the Mini App. .env.example lists its settings.
+bot/           Telegram bot (server-side synthesis on your PC) + shared text/TTS modules. .env.example lists its settings.
+tests/         pytest + node tests, golden cases for text handling.
+demo/          End-to-end demo script and sample document.
 experiments/   Early TTS comparisons: espeak (C + Python), piper, kokoro (Python, desktop).
 models/        Downloaded model files (git-ignored).
 output/        Generated audio (git-ignored).
-docs/          Extra notes.
+docs/          Architecture, task briefs, known limitations, agent/human roles.
+AGENTS.md      Instructions for AI coding agents.
 ```
+
+Docs: [architecture](docs/architecture.md) · [task briefs](docs/tasks/README.md) · [known limitations](docs/limitations.md) · [agent and human roles](docs/agent-human-roles.md) · [AGENTS.md](AGENTS.md)
+
+## Demo and tests
+
+```bash
+python demo/run_demo.py          # sample.md -> output/demo.ogg, prints the stages and speed
+python -m pytest tests -q        # Python tests
+node tests/miniapp.test.mjs      # Mini App text logic
+```
+
+CI (GitHub Actions) runs the tests on every push to `main`.
 
 ## Quick start
 

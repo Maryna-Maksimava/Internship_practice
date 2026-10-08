@@ -11,14 +11,11 @@ import asyncio
 import io
 import os
 import pathlib
-import re
 import threading
 
-import numpy as np
-import soundfile as sf
 from dotenv import load_dotenv
-from kokoro_onnx import Kokoro
 from pdf_text import pdf_to_text
+from tts import synthesize
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, WebAppInfo
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 
@@ -39,60 +36,7 @@ MAX_CHARS = 60_000                 # ~1 hour of audio; protects your CPU
 VOICES = ["af_heart", "af_bella", "af_nicole", "am_michael", "am_adam", "bf_emma", "bm_george"]
 DEFAULTS = {"voice": "af_heart", "speed": 1.0, "pause": 0.7}
 
-kokoro = Kokoro(str(ROOT / "models" / "kokoro-v1.0.onnx"), str(ROOT / "models" / "voices-v1.0.bin"))
 synth_lock = asyncio.Lock()  # one job at a time; the CPU is the bottleneck
-
-
-_TIME = re.compile(r"(?<![\d:.])(\d{1,2}):([0-5]\d)(?![\d:])")
-
-
-def _say_time(m: re.Match) -> str:
-    h, mi = m.group(1), m.group(2)
-    if mi == "00":
-        return f"{h} o'clock"
-    return f"{h} oh {int(mi)}" if mi[0] == "0" else f"{h} {mi}"
-
-
-def normalize(text: str) -> str:
-    """Kokoro treats ':' as a long pause, so '7:30' becomes '7 30' (read 'seven thirty')."""
-    return _TIME.sub(_say_time, text)
-
-
-def chunks(text: str):
-    """Yield (sentence_group, pause_multiplier). 1 after a line break, 2 after a blank line."""
-    out, blank = [], 0
-    for line in text.replace("\r\n", "\n").replace("\r", "\n").split("\n"):
-        if not line.strip():
-            blank += 1
-            continue
-        if out:
-            out[-1][1] = 2 if blank else 1
-        blank = 0
-        cur = ""
-        for s in re.findall(r"[^.!?]+[.!?]*\s*", re.sub(r"\s+", " ", line)):
-            if len(cur + s) > 300 and cur:
-                out.append([cur, 0])
-                cur = s
-            else:
-                cur += s
-        if cur.strip():
-            out.append([cur, 0])
-    return out
-
-
-def synthesize(text: str, voice: str, speed: float, pause: float, on_progress=None) -> bytes:
-    parts, sr = [], 24000
-    pieces = chunks(normalize(text))
-    for i, (sentence, mult) in enumerate(pieces):
-        samples, sr = kokoro.create(sentence, voice=voice, speed=speed, lang="en-us")
-        parts.append(samples)
-        if mult and pause:
-            parts.append(np.zeros(int(sr * pause * mult), dtype=np.float32))
-        if on_progress:
-            on_progress(i + 1, len(pieces))
-    buf = io.BytesIO()
-    sf.write(buf, np.concatenate(parts), sr, format="OGG", subtype="VORBIS")
-    return buf.getvalue()
 
 
 def bar(done: int, total: int, width: int = 20) -> str:
