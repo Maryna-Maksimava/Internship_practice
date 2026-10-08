@@ -24,6 +24,8 @@ AGENTS.md      Instructions for AI coding agents.
 
 Docs: [architecture](docs/architecture.md) · [task briefs](docs/tasks/README.md) · [known limitations](docs/limitations.md) · [agent and human roles](docs/agent-human-roles.md) · [AGENTS.md](AGENTS.md)
 
+Final deliverables: [final report](docs/final-report.md) · [evaluation report](docs/evaluation-report.md) · [evidence](docs/evidence.md) · [reproduction guide](docs/reproduction.md) · [agent worklog](docs/agent-worklog.md) · [individual contribution](docs/contribution.md) · [cloud resources plan](docs/cloud-resources.md) · [demo script](docs/demo-script.md) · [presentation](docs/presentation.pptx) · [project passport](docs/passport.docx)
+
 ## Demo and tests
 
 ```bash

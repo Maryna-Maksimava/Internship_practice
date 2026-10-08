@@ -17,6 +17,6 @@ Honest list as of the current prototype. "Impact" says who feels it; "Plan" link
 | 11 | Per-user settings (`/voice`, `/speed`, `/pause`) reset when the bot restarts | minor | none |
 | 12 | First Mini App use downloads the model (roughly 80-330 MB depending on backend) | mobile data | cached afterwards |
 | 13 | Privacy of the Mini App and the bot allowlist are implemented but not verified end to end | assurance | T-03 |
-| 14 | Pauses at headings and times were checked in text, not by ear (the agent cannot hear) | quality | T-05 human listening sheet |
+| 14 | Quality by ear comes from one listener (24 blinded clips); heading pauses in PDFs were checked in text only (the agent cannot hear) | confidence in the naturalness score | more raters if the project continues (`evals/score_listening.py` is ready) |
 | 15 | Text logic exists twice (Python and JavaScript) and must be kept in sync | maintenance | shared golden cases in tests |
 | 16 | Model licence: Kokoro is Apache 2.0; check any extra voice or model before redistributing | legal | n/a |
